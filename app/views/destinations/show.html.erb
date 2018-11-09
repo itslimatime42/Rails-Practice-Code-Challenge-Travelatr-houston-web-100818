@@ -1,0 +1,21 @@
+<h1><%= @destination.name %></h1>
+<p>Country: <%= @destination.country %></p>
+
+<%if @destination.posts.empty?%>
+  <p>Most recent 5 posts: This Destination doesn't have any posts yet.</p>
+<% else %>
+<p>Most recent 5 posts:</p>
+  <ul>
+    <% @destination.last_5_posts.each do |post|%>
+    <li><%= link_to post.title, post_path(post) %></li>
+    <% end %>
+  </ul>
+
+  <p>Featured Post: <%= link_to @destination.featured_post.title, post_path(@destination.featured_post) %></p>
+
+  <p>Avg Blogger Age: <%= @destination.avg_blogger_age %></p>
+<% end %>
+
+
+
+<p><%= link_to "Back to All Destinations", destinations_path %></p>

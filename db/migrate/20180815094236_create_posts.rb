@@ -4,8 +4,8 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :content
       t.integer :likes
-      t.integer :blogger_id
-      t.integer :destination_id
+      t.belongs_to :blogger
+      t.belongs_to :destination
 
       t.timestamps
     end

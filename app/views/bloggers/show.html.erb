@@ -1,0 +1,16 @@
+<h1><%= @blogger.name %></h1>
+<p>Age: <%= @blogger.age %></p>
+<p>Bio: <%= @blogger.bio %></p>
+<p>Total Likes: <%= @blogger.total_likes %></p>
+ <%if @blogger.posts.empty?%>
+<p>Featured Post: This Blogger has not written any posts yet.</p>
+ <% else %>
+  <p>Featured Post: <%= link_to @blogger.featured_post.title, post_path(@blogger.featured_post) %></p>
+  <p>Favorite Destinations: </p>
+  <ul>
+    <% @blogger.favorite_destinations.each do |destination| %>
+      <li><%= link_to destination.name, destination_path(destination) %></li>
+    <% end %>
+  </ul>
+<% end %>
+<p><%= link_to "Back to All Bloggers", bloggers_path %></p>
